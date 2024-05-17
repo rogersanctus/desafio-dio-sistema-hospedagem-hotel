@@ -44,6 +44,7 @@ while (!sair)
   Console.WriteLine("0 - Sair");
   Console.WriteLine();
 
+  Console.Write("Escolha uma opção: ");
   var input = Console.ReadLine();
   Console.WriteLine();
 
@@ -69,3 +70,5 @@ while (!sair)
       break;
   }
 }
+
+ColoredConsole.WriteLine("Saindo...", ConsoleColor.Blue);
