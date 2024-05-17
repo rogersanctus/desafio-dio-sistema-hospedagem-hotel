@@ -83,4 +83,13 @@ public class ConfiguracaoInicialView : ViewBase
     return true;
   }
 
+  public void ExibirQuantidadeVagas()
+  {
+    ColoredConsole.WriteLine("Exibindo Quantidade de Vagas de todo o Hotel");
+    ColoredConsole.WriteLine("---");
+
+    ColoredConsole.WriteLine($"Quantidade de Vagas: {this._viewModel.ObterQuantidadeVagas()}", ConsoleColor.Cyan);
+    Console.WriteLine();
+  }
+
 }

@@ -25,4 +25,9 @@ public class ConfiguracaoInicialViewModel : ViewModelBase
 
     }
   }
+
+  public int ObterQuantidadeVagas()
+  {
+    return this.configuracaoHotel.QuatidadeVagas;
+  }
 }

@@ -36,7 +36,8 @@ while (!sair)
   Console.WriteLine("# Configuração Hotel");
   Console.WriteLine("1 - Configurar Quantidade de Vagas no Hotel");
   Console.WriteLine("2 - Criar Suíte");
-  Console.WriteLine("3 - Listar Suítes");
+  Console.WriteLine("3 - Exibir Capacidade Geral do Hotel");
+  Console.WriteLine("4 - Listar Suítes");
   Console.WriteLine();
   Console.WriteLine("# Reservas");
   Console.WriteLine();
@@ -58,6 +59,9 @@ while (!sair)
       suiteView.CriarSuite();
       break;
     case "3":
+      configuracaoInicialView.ExibirQuantidadeVagas();
+      break;
+    case "4":
       suiteView.ListarSuites();
       break;
     default:
