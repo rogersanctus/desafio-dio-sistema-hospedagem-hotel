@@ -1,0 +1,6 @@
+root = true
+
+[*.cs]
+charset = utf-8
+dotnet_diagnostic.CA1303.severity = silent
+dotnet_diagnostic.CA1305.severity = silent

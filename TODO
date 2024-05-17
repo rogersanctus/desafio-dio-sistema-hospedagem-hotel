@@ -1,0 +1,36 @@
+# Configuração inicial
+  * Definir capacidade geral do hotel em quantidade de pessoas (DONE)
+
+# Configuração de suítes
+  * Criar suítes
+    - Difinir nome (DONE)
+      > armazenar em maiúsculo
+    - Definir capacidade (DONE)
+      > A capacidade da nova suítes não deve, somada a capacidade das demais suites, ultrapassar a capacidade geral do hotel
+    - Definir valor da diária (DONE)
+      > O valor da diária deve ser maior ou igual 0
+    - Auto atribuir um número à suíte (DONE)
+
+# Gerenciamento de Usuários
+  * Criar um Usuário
+    - Definir nome
+      > armazenar em maiúsculo
+    - Definir sobrenome
+      > armazenar em maiúsculo
+    - Definir nome de usuário
+      > Deve ser único
+      > Não deve possuir menos de 3 caracteres
+  * Buscar Usuário
+    - por nome de usuário
+
+# Gerenciamento de Reservas
+  * Escolha da suíte
+    - Deve listar as suítes disponíveis
+    - Ao escolher deve validar se a suíte não está sendo usada (está em alguma reserva)
+  * Adicionar hóspede
+    - Oferecer opção de adicionar novo hóspede ou de adicionar um usuário cadastrado por nome de usuário
+      > O hóspede não pode estar em outra reserva no mesmo momento
+      > A quantidade de hóspedes deve ser menor ou igual a capacidade da suíte escolhida
+  * Definir o tempo de reserva
+    - O tempo de reserva é em dias, e deve ser maior que 0
+    - Tempo de reserva maior ou igual a 10 dias, aplica um desconto de 10%
