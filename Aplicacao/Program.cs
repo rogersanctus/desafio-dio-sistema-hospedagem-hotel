@@ -34,7 +34,7 @@ while (!sair)
   Console.WriteLine("---");
 
   Console.WriteLine("# Configuração Hotel");
-  Console.WriteLine("1 - Configurar Quantidade de Vagas no Hotel");
+  Console.WriteLine("1 - Configurar Capacidade Geral do Hotel");
   Console.WriteLine("2 - Criar Suíte");
   Console.WriteLine("3 - Exibir Capacidade Geral do Hotel");
   Console.WriteLine("4 - Listar Suítes");

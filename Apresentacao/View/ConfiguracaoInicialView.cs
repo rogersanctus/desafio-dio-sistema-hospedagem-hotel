@@ -54,7 +54,7 @@ public class ConfiguracaoInicialView : ViewBase
     {
       ColoredConsole.WriteLine("Por algum motivo, a configuração do Hotel não foi realizada. De todo modo, você pode realizá-la novamente pelo Menu.", ConsoleColor.Yellow);
       ColoredConsole.Write("Para isso acesse a opção: ", ConsoleColor.Yellow);
-      ColoredConsole.WriteLine("Configurar Quantidade de Vagas", ConsoleColor.Blue);
+      ColoredConsole.WriteLine("Configurar Capacidade Geral do Hotel", ConsoleColor.Blue);
       ColoredConsole.WriteLine();
     }
   }
@@ -85,10 +85,10 @@ public class ConfiguracaoInicialView : ViewBase
 
   public void ExibirQuantidadeVagas()
   {
-    ColoredConsole.WriteLine("Exibindo Quantidade de Vagas de todo o Hotel");
+    ColoredConsole.WriteLine("Exibindo Capacidade de Vagas Geral do Hotel");
     ColoredConsole.WriteLine("---");
 
-    ColoredConsole.WriteLine($"Quantidade de Vagas: {this._viewModel.ObterQuantidadeVagas()}", ConsoleColor.Cyan);
+    ColoredConsole.WriteLine($"Capacidade: {this._viewModel.ObterQuantidadeVagas()}", ConsoleColor.Cyan);
     Console.WriteLine();
   }
 
