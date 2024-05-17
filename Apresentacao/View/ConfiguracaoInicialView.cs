@@ -18,7 +18,7 @@ public class ConfiguracaoInicialView : ViewBase
   {
   }
 
-  public override void Notificar(string evento, string? parametro = null)
+  public override void AoNotificar(string evento, string? parametro = null)
   {
     switch (evento)
     {

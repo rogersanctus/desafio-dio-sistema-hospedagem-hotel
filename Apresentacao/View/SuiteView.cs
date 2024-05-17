@@ -14,7 +14,7 @@ public class SuiteView : ViewBase
 
   public SuiteViewModel _viewModel { get => (SuiteViewModel)this.ViewModel; }
 
-  public override void Notificar(string evento, string? argumento = null)
+  public override void AoNotificar(string evento, string? argumento = null)
   {
     switch (evento)
     {

@@ -13,7 +13,7 @@ public class ReservaView : ViewBase
 
   public ReservaViewModel _viewModel { get => (ReservaViewModel)this.ViewModel; }
 
-  public override void Notificar(string evento, string? argumento = null)
+  public override void AoNotificar(string evento, string? argumento = null)
   {
     switch (evento)
     {

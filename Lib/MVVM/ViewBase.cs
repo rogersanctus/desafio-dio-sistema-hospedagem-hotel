@@ -12,5 +12,5 @@ public abstract class ViewBase
     this.ViewModel.SetView(this);
   }
 
-  public abstract void Notificar(string evento, string? argumento = null);
+  public abstract void AoNotificar(string evento, string? argumento = null);
 }

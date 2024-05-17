@@ -15,7 +15,7 @@ public class ViewModelBase
   {
     if (this.View != null)
     {
-      this.View.Notificar(evento, argumento);
+      this.View.AoNotificar(evento, argumento);
     }
   }
 }
