@@ -3,7 +3,7 @@ DIO - Trilha .NET - Explorando a linguagem C#
 
 # Sistema de Hospedagem de Hotel
 
-Informações sobre o desafio original em: [trilha-net-fundamentos-desafio](https://github.com/digitalinnovationone/trilha-net-explorando-desafio)
+Informações sobre o desafio original em: [trilha-net-explorando-desafio](https://github.com/digitalinnovationone/trilha-net-explorando-desafio)
 
 ## Como foi resolvido?
 
