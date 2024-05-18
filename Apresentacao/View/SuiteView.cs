@@ -6,9 +6,17 @@ using SistemaHospedagem.Lib.MVVM.ViewModel;
 
 namespace SistemaHospedagem.Apresentacao.View;
 
+enum EtapaCriarSuite
+{
+  Nenhuma,
+  AtribuirCapacidade,
+  AtribuirNome,
+  AtribuirPrecoDiaria
+}
+
 public class SuiteView : ViewBase
 {
-  private Suite? suiteAtual = null;
+  private EtapaCriarSuite etapaCriarSuite = EtapaCriarSuite.Nenhuma;
 
   public SuiteView(ViewModelBase viewModel) : base(viewModel) { }
 
@@ -19,18 +27,21 @@ public class SuiteView : ViewBase
     switch (evento)
     {
       case "AtribuirNome:Sucesso":
+        etapaCriarSuite = EtapaCriarSuite.AtribuirNome;
         ColoredConsole.WriteLine("Nome da suíte alterado com sucesso.", ConsoleColor.Green);
         break;
       case "AtribuirNome:Erro":
         Utils.MostrarErro("Falha ao atribuir o nome da suíte.", argumento);
         break;
       case "AtribuirCapacidade:Sucesso":
+        etapaCriarSuite = EtapaCriarSuite.AtribuirCapacidade;
         ColoredConsole.WriteLine("Capacidade da suíte alterada com sucesso.", ConsoleColor.Green);
         break;
       case "AtribuirCapacidade:Erro":
         Utils.MostrarErro("Falha ao atribuir a capacidade da suíte.", argumento);
         break;
       case "AtribuirPrecoDiaria:Sucesso":
+        etapaCriarSuite = EtapaCriarSuite.AtribuirPrecoDiaria;
         ColoredConsole.WriteLine("Preço da diária alterado com sucesso.", ConsoleColor.Green);
         break;
       case "AtribuirPrecoDiaria:Erro":
@@ -47,73 +58,44 @@ public class SuiteView : ViewBase
     ColoredConsole.WriteLine();
   }
 
-  private void Inicializar()
+  private Suite Inicializar()
   {
-    if (this.suiteAtual != null)
-    {
-      ColoredConsole.WriteLine("Uma suite já estava sendo criada. Uma nova será iniciada do início");
-    }
+    etapaCriarSuite = EtapaCriarSuite.Nenhuma;
 
-    this.suiteAtual = new Suite();
+    return new Suite();
   }
 
-  private bool ChecarInicializacaoSuite()
+  private bool ChecarEtapaFinalizada(EtapaCriarSuite etapaAtual)
   {
-    if (suiteAtual == null)
-    {
-      ColoredConsole.WriteLine("Nenhuma suite foi inicializada ainda", ConsoleColor.Red);
-      ColoredConsole.WriteLine();
-      return false;
-    }
-
-    return true;
+    return etapaCriarSuite == etapaAtual;
   }
 
-  private bool ChecarEtapaFinalizada(int etapaAtual)
+  private bool AtribuirNome(Suite suite)
   {
-    int result = suiteAtual!.EtapasConfiguradas & etapaAtual;
-
-    return result == etapaAtual;
-  }
-
-  private bool AtribuirNome()
-  {
-    if (!ChecarInicializacaoSuite())
-    {
-      return false;
-    }
-
-    ColoredConsole.WriteLine("# Atribuindo nome à suíte");
-    ColoredConsole.WriteLine("Informe o nome: ");
+    ColoredConsole.Write("# Informe o nome: ");
 
     var nomeStr = Console.ReadLine();
 
-    if (string.IsNullOrEmpty(nomeStr))
+    if (nomeStr == null)
     {
       ColoredConsole.WriteLine("O Nome da suíte não pode ser vazio", ConsoleColor.Red);
       ColoredConsole.WriteLine();
       return false;
     }
 
-    this._viewModel.AtribuirNome(suiteAtual!, nomeStr);
+    this._viewModel.AtribuirNome(suite, nomeStr);
 
-    return ChecarEtapaFinalizada(Suite.ETAPA_NOME);
+    return ChecarEtapaFinalizada(EtapaCriarSuite.AtribuirNome);
   }
 
 
-  private bool AtribuirCapacidade()
+  private bool AtribuirCapacidade(Suite suite)
   {
-    if (!ChecarInicializacaoSuite())
-    {
-      return false;
-    }
-
-    ColoredConsole.WriteLine("# Atribuindo capacidade da suíte");
-    ColoredConsole.WriteLine("Informe a capacidade: ");
+    ColoredConsole.Write("# Informe a capacidade: ");
 
     var capacidadeStr = Console.ReadLine();
 
-    if (string.IsNullOrEmpty(capacidadeStr))
+    if (capacidadeStr == null)
     {
       ColoredConsole.WriteLine("A capacidade da suíte não pode ser vazia", ConsoleColor.Red);
       ColoredConsole.WriteLine();
@@ -127,23 +109,17 @@ public class SuiteView : ViewBase
       return false;
     }
 
-    this._viewModel.AtribuirCapacidade(suiteAtual!, capacidade);
-    return ChecarEtapaFinalizada(Suite.ETAPA_CAPACIDADE);
+    this._viewModel.AtribuirCapacidade(suite, capacidade);
+    return ChecarEtapaFinalizada(EtapaCriarSuite.AtribuirCapacidade);
   }
 
-  private bool AtribuirPrecoDiaria()
+  private bool AtribuirPrecoDiaria(Suite suite)
   {
-    if (!ChecarInicializacaoSuite())
-    {
-      return false;
-    }
-
-    ColoredConsole.WriteLine("# Atribuindo o preço da diária");
-    ColoredConsole.Write("Informe o preço da diária: ");
+    ColoredConsole.Write("# Informe o preço da diária: ");
 
     var precoDiariaStr = Console.ReadLine();
 
-    if (string.IsNullOrEmpty(precoDiariaStr))
+    if (precoDiariaStr == null)
     {
       ColoredConsole.WriteLine("O Preço da diária não pode ser vazio", ConsoleColor.Red);
       ColoredConsole.WriteLine();
@@ -157,15 +133,15 @@ public class SuiteView : ViewBase
       return false;
     }
 
-    this._viewModel.AtribuirPrecoDiaria(suiteAtual!, precoDiaria);
-    return ChecarEtapaFinalizada(Suite.ETAPA_PRECO_DIARIA);
+    this._viewModel.AtribuirPrecoDiaria(suite!, precoDiaria);
+    return ChecarEtapaFinalizada(EtapaCriarSuite.AtribuirPrecoDiaria);
   }
 
   public void CriarSuite()
   {
-    Inicializar();
+    Suite suite = Inicializar();
 
-    List<Func<bool>> etapas = new List<Func<bool>>
+    List<Func<Suite, bool>> etapas = new List<Func<Suite, bool>>
     {
       AtribuirNome,
       AtribuirCapacidade,
@@ -179,7 +155,7 @@ public class SuiteView : ViewBase
     bool success = true;
     foreach (var etapa in etapas)
     {
-      success &= etapa();
+      success &= etapa(suite);
 
       if (!success)
       {
@@ -189,7 +165,7 @@ public class SuiteView : ViewBase
 
     if (success)
     {
-      _viewModel.AdicionarSuite(suiteAtual!);
+      _viewModel.AdicionarSuite(suite);
     }
   }
 

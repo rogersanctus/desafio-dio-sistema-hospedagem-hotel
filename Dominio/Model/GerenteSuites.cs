@@ -16,11 +16,6 @@ public class GerenteSuites
   {
     suite.Numero = this._Suites.Count + 1;
 
-    if (!suite.IsValida)
-    {
-      throw new InvalidOperationException("Nem todas as configurações foram realizadas com sucesso");
-    }
-
     var vagasUtilizadas = this._Suites.Sum(suite => suite.Capacidade);
 
     if (vagasUtilizadas + suite.Capacidade > this.configuracaoHotel.QuatidadeVagas)
