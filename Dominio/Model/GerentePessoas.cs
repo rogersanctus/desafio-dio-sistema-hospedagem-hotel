@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using SistemaHospedagem.Lib.UI;
 
 namespace SistemaHospedagem.Dominio.Model;
 
@@ -14,7 +15,7 @@ public class GerentePessoas
 
   public void AdicionarPessoa(Pessoa pessoa)
   {
-    var existente = _Pessoas.Find(pessoa => pessoa.Usuario == pessoa.Usuario);
+    var existente = _Pessoas.Find(pessoaBusca => pessoaBusca.Usuario == pessoa.Usuario);
 
     if (existente != null)
     {
