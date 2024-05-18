@@ -61,6 +61,7 @@ public class PessoaView : ViewBase
 
   public void CriarPessoa()
   {
+    etapaConcluida = EtapaCriarPessoa.Nenhuma;
     Pessoa pessoa = new Pessoa();
 
     ColoredConsole.WriteLine("Criando novo Hóspede");
