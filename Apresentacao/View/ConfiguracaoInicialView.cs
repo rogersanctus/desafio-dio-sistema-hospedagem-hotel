@@ -30,12 +30,7 @@ public class ConfiguracaoInicialView : ViewBase
       case "AtualizarQuantidadeVagas:Erro":
         configuracaoRealizada = false;
 
-        ColoredConsole.WriteLine("Falha ao atualizar a quantidade de vagas do Hotel.", ConsoleColor.Red);
-
-        if (!string.IsNullOrEmpty(parametro))
-        {
-          ColoredConsole.WriteLine(parametro, ConsoleColor.Red);
-        }
+        Utils.MostrarErro("Falha ao atualizar a quantidade de vagas do Hotel.", parametro);
         break;
     }
 

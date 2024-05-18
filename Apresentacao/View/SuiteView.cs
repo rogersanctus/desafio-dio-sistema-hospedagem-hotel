@@ -22,49 +22,25 @@ public class SuiteView : ViewBase
         ColoredConsole.WriteLine("Nome da suíte alterado com sucesso.", ConsoleColor.Green);
         break;
       case "AtribuirNome:Erro":
-        ColoredConsole.WriteLine("Falha ao atribuir o nome da suíte", ConsoleColor.Red);
-
-        if (argumento != null)
-        {
-          ColoredConsole.WriteLine(argumento, ConsoleColor.Red);
-        }
-
+        Utils.MostrarErro("Falha ao atribuir o nome da suíte.", argumento);
         break;
       case "AtribuirCapacidade:Sucesso":
         ColoredConsole.WriteLine("Capacidade da suíte alterada com sucesso.", ConsoleColor.Green);
         break;
       case "AtribuirCapacidade:Erro":
-        ColoredConsole.WriteLine("Falha ao atribuir a capacidade da suíte", ConsoleColor.Red);
-
-        if (argumento != null)
-        {
-          ColoredConsole.WriteLine(argumento, ConsoleColor.Red);
-        }
-
+        Utils.MostrarErro("Falha ao atribuir a capacidade da suíte.", argumento);
         break;
       case "AtribuirPrecoDiaria:Sucesso":
         ColoredConsole.WriteLine("Preço da diária alterado com sucesso.", ConsoleColor.Green);
         break;
-
       case "AtribuirPrecoDiaria:Erro":
-        ColoredConsole.WriteLine("Falha ao atribuir o preço da diária.", ConsoleColor.Red);
-
-        if (argumento != null)
-        {
-          ColoredConsole.WriteLine(argumento, ConsoleColor.Red);
-        }
-
+        Utils.MostrarErro("Falha ao atribuir o preço da diária.", argumento);
         break;
       case "AdicionarSuite:Sucesso":
         ColoredConsole.WriteLine("Suite adicionada com sucesso.", ConsoleColor.Green);
         break;
       case "AdicionarSuite:Erro":
-        ColoredConsole.WriteLine("Falha ao adicionar a suite.", ConsoleColor.Red);
-
-        if (argumento != null)
-        {
-          ColoredConsole.WriteLine(argumento, ConsoleColor.Red);
-        }
+        Utils.MostrarErro("Falha ao adicionar a suite.", argumento);
         break;
     }
 

@@ -19,13 +19,13 @@ public class ReservaView : ViewBase
     {
       case "AtribuirSuiteReserva:Sucesso":
         ColoredConsole.WriteLine("Reserva efetuada com sucesso.", ConsoleColor.Green);
-        ColoredConsole.WriteLine();
         break;
       case "AtribuirSuiteReserva:Erro":
-        ColoredConsole.WriteLine("Falha ao atribuir a suíte", ConsoleColor.Red);
-        ColoredConsole.WriteLine();
+        Utils.MostrarErro("Falha ao atribuir a suíte", argumento);
         break;
     }
+
+    ColoredConsole.WriteLine();
   }
 
   private void IniciarReserva()

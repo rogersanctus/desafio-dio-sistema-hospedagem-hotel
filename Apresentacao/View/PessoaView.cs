@@ -31,47 +31,27 @@ public class PessoaView : ViewBase
         etapaConcluida = EtapaCriarPessoa.AtribuirNome;
         break;
       case "AtribuirNome:Erro":
-        ColoredConsole.WriteLine("Falha ao atribuir o nome.", ConsoleColor.Red);
-
-        if (argumento != null)
-        {
-          ColoredConsole.WriteLine(argumento, ConsoleColor.Red);
-        }
+        Utils.MostrarErro("Falha ao atribuir o Nome.", argumento);
         break;
       case "AtribuirSobrenome:Sucesso":
         ColoredConsole.WriteLine("Sobrenome atribuído com sucesso.", ConsoleColor.Green);
         etapaConcluida = EtapaCriarPessoa.AtribuirSobrenome;
         break;
       case "AtribuirSobrenome:Erro":
-        ColoredConsole.WriteLine("Falha ao atribuir o sobrenome.", ConsoleColor.Red);
-
-        if (argumento != null)
-        {
-          ColoredConsole.WriteLine(argumento, ConsoleColor.Red);
-        }
+        Utils.MostrarErro("Falha ao atribuir o Sobrenome.", argumento);
         break;
       case "AtribuirUsuario:Sucesso":
         ColoredConsole.WriteLine("Nome de Usuário atribuído com sucesso.", ConsoleColor.Green);
         etapaConcluida = EtapaCriarPessoa.AtribuirUsuario;
         break;
       case "AtribuirUsuario:Erro":
-        ColoredConsole.WriteLine("Falha ao atribuir o Nome de Usuário.", ConsoleColor.Red);
-
-        if (argumento != null)
-        {
-          ColoredConsole.WriteLine(argumento, ConsoleColor.Red);
-        }
+        Utils.MostrarErro("Falha ao atribuir o Nome de Usuário.", argumento);
         break;
       case "AdicionarPessoa:Sucesso":
         ColoredConsole.WriteLine("Hóspede adicionado com sucesso.", ConsoleColor.Green);
         break;
       case "AdicionarPessoa:Erro":
-        ColoredConsole.WriteLine("Falha ao adicionar a Hóspede.", ConsoleColor.Red);
-
-        if (argumento != null)
-        {
-          ColoredConsole.WriteLine(argumento, ConsoleColor.Red);
-        }
+        Utils.MostrarErro("Falha ao adicionar a Hóspede.", argumento);
         break;
     }
 
