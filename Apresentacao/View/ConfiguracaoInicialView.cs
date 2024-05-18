@@ -8,6 +8,7 @@ namespace SistemaHospedagem.Apresentacao.View;
 
 public class ConfiguracaoInicialView : ViewBase
 {
+  private bool configuracaoInicial = true;
   private bool configuracaoRealizada = false;
   private ConfiguracaoInicialViewModel _viewModel
   {
@@ -24,6 +25,7 @@ public class ConfiguracaoInicialView : ViewBase
     {
       case "AtualizarQuantidadeVagas:Sucesso":
         configuracaoRealizada = true;
+        configuracaoInicial = false;
 
         ColoredConsole.WriteLine("Configuração realizada com sucesso.", ConsoleColor.Green);
         break;
@@ -45,7 +47,7 @@ public class ConfiguracaoInicialView : ViewBase
 
     ConfigurarQuantidadeVagas();
 
-    if (!configuracaoRealizada)
+    if (configuracaoInicial && !configuracaoRealizada)
     {
       ColoredConsole.WriteLine("Por algum motivo, a configuração do Hotel não foi realizada. De todo modo, você pode realizá-la novamente pelo Menu.", ConsoleColor.Yellow);
       ColoredConsole.Write("Para isso acesse a opção: ", ConsoleColor.Yellow);
