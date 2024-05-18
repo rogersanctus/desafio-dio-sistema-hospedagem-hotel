@@ -56,6 +56,8 @@ public class Pessoa
     }
   }
 
+  public Pessoa() { }
+
 
   public Pessoa(string nome, string sobrenome, string usuario)
   {

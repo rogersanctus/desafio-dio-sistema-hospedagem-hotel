@@ -6,12 +6,15 @@ using SistemaHospedagem.Lib.UI;
 
 var configuracaoHotel = new ConfiguracaoHotel();
 var gerenteSuites = new GerenteSuites(configuracaoHotel);
+var gerentePessoas = new GerentePessoas();
 
 var configuracaoInicialViewModel = new ConfiguracaoInicialViewModel(configuracaoHotel);
 var suiteViewModel = new SuiteViewModel(gerenteSuites);
+var pessoaViewModel = new PessoaViewModel(gerentePessoas);
 
 var configuracaoInicialView = new ConfiguracaoInicialView(configuracaoInicialViewModel);
 var suiteView = new SuiteView(suiteViewModel);
+var pessoaView = new PessoaView(pessoaViewModel);
 
 bool sair = false;
 
@@ -40,6 +43,7 @@ while (!sair)
   Console.WriteLine("4 - Listar Suítes");
   Console.WriteLine();
   Console.WriteLine("# Reservas");
+  Console.WriteLine("5 - Criar Hospede");
   Console.WriteLine();
   Console.WriteLine("0 - Sair");
   Console.WriteLine();
@@ -64,6 +68,9 @@ while (!sair)
       break;
     case "4":
       suiteView.ListarSuites();
+      break;
+    case "5":
+      pessoaView.CriarPessoa();
       break;
     default:
       ColoredConsole.WriteLine("Opção Inválida", ConsoleColor.Red);
