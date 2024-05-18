@@ -35,7 +35,7 @@ public class ReservaViewModel : ViewModelBase
 
     if (suite == null)
     {
-      NotificarView("AtribuirSuiteReserva:Erro", "Esta suíte não está disponível ou não existe");
+      NotificarViews("AtribuirSuiteReserva:Erro", "Esta suíte não está disponível ou não existe");
       return;
     }
 
@@ -43,11 +43,11 @@ public class ReservaViewModel : ViewModelBase
     {
       reserva.Suite = suite;
 
-      this.NotificarView("AtribuirSuiteReserva:Sucesso");
+      this.NotificarViews("AtribuirSuiteReserva:Sucesso");
     }
     catch (ArgumentException ex)
     {
-      this.NotificarView("AtribuirSuiteReserva:Erro", ex.Message);
+      this.NotificarViews("AtribuirSuiteReserva:Erro", ex.Message);
     }
   }
 
@@ -57,11 +57,11 @@ public class ReservaViewModel : ViewModelBase
     try
     {
       reserva.DiasReserva = dias;
-      this.NotificarView("AtribuirDiasReserva:Sucesso");
+      this.NotificarViews("AtribuirDiasReserva:Sucesso");
     }
     catch (ArgumentException ex)
     {
-      this.NotificarView("AtribuirDiasReserva:Erro", ex.Message);
+      this.NotificarViews("AtribuirDiasReserva:Erro", ex.Message);
     }
   }
 
@@ -70,11 +70,11 @@ public class ReservaViewModel : ViewModelBase
     try
     {
       reserva.AdicionarHospede(pessoa);
-      this.NotificarView("AdicionarHospedeReserva:Sucesso");
+      this.NotificarViews("AdicionarHospedeReserva:Sucesso");
     }
     catch (ArgumentException ex)
     {
-      this.NotificarView("AdicionarHospedeReserva:Erro", ex.Message);
+      this.NotificarViews("AdicionarHospedeReserva:Erro", ex.Message);
     }
   }
 
@@ -82,7 +82,7 @@ public class ReservaViewModel : ViewModelBase
   {
     if (!reserva.IsValida)
     {
-      NotificarView("AdicionarReserva:Erro", "Reserva inválida");
+      NotificarViews("AdicionarReserva:Erro", "Reserva inválida");
       return;
     }
 
@@ -92,7 +92,7 @@ public class ReservaViewModel : ViewModelBase
     }
     catch (InvalidOperationException ex)
     {
-      this.NotificarView("AdicionarReserva:Erro", ex.Message);
+      this.NotificarViews("AdicionarReserva:Erro", ex.Message);
     }
   }
 }

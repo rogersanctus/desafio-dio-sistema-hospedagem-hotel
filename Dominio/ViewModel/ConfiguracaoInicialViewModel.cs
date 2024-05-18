@@ -17,12 +17,11 @@ public class ConfiguracaoInicialViewModel : ViewModelBase
     try
     {
       this.configuracaoHotel.ConfigurarVagas(quatidadeVagas);
-      this.NotificarView("AtualizarQuantidadeVagas:Sucesso");
+      this.NotificarViews("AtualizarQuantidadeVagas:Sucesso");
     }
     catch (ArgumentException ex)
     {
-      NotificarView("AtualizarQuantidadeVagas:Erro", ex.Message);
-
+      NotificarViews("AtualizarQuantidadeVagas:Erro", ex.Message);
     }
   }
 

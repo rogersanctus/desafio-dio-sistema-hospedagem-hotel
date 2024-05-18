@@ -18,11 +18,11 @@ public class SuiteViewModel : ViewModelBase
     try
     {
       suite.Nome = nome;
-      this.NotificarView("AtribuirNome:Sucesso");
+      this.NotificarViews("AtribuirNome:Sucesso");
     }
     catch (ArgumentException ex)
     {
-      this.NotificarView("AtribuirNome:Erro", ex.Message);
+      this.NotificarViews("AtribuirNome:Erro", ex.Message);
     }
   }
 
@@ -31,11 +31,11 @@ public class SuiteViewModel : ViewModelBase
     try
     {
       suite.Capacidade = capacidade;
-      this.NotificarView("AtribuirCapacidade:Sucesso");
+      this.NotificarViews("AtribuirCapacidade:Sucesso");
     }
     catch (ArgumentException ex)
     {
-      this.NotificarView("AtribuirCapacidade:Erro", ex.Message);
+      this.NotificarViews("AtribuirCapacidade:Erro", ex.Message);
     }
   }
 
@@ -44,11 +44,11 @@ public class SuiteViewModel : ViewModelBase
     try
     {
       suite.PrecoDiaria = precoDiaria;
-      this.NotificarView("AtribuirPrecoDiaria:Sucesso");
+      this.NotificarViews("AtribuirPrecoDiaria:Sucesso");
     }
     catch (ArgumentException ex)
     {
-      this.NotificarView("AtribuirPrecoDiaria:Erro", ex.Message);
+      this.NotificarViews("AtribuirPrecoDiaria:Erro", ex.Message);
     }
   }
 
@@ -57,11 +57,11 @@ public class SuiteViewModel : ViewModelBase
     try
     {
       this.gerenteSuites.AdicionarSuite(suite);
-      this.NotificarView("AdicionarSuite:Sucesso");
+      this.NotificarViews("AdicionarSuite:Sucesso");
     }
     catch (InvalidOperationException ex)
     {
-      this.NotificarView("AdicionarSuite:Erro", ex.Message);
+      this.NotificarViews("AdicionarSuite:Erro", ex.Message);
     }
   }
 

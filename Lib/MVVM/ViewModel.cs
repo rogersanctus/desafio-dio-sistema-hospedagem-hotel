@@ -4,18 +4,15 @@ namespace SistemaHospedagem.Lib.MVVM.ViewModel;
 
 public class ViewModelBase
 {
-  protected virtual ViewBase? View { get; private set; }
+  protected virtual List<ViewBase> Views { get; private set; } = new List<ViewBase>();
 
-  public void SetView(ViewBase view)
+  public void AdicionarView(ViewBase view)
   {
-    this.View = view;
+    this.Views.Add(view);
   }
 
-  protected void NotificarView(string evento, string? argumento = null)
+  protected void NotificarViews(string evento, string? argumento = null)
   {
-    if (this.View != null)
-    {
-      this.View.AoNotificar(evento, argumento);
-    }
+    Views.ForEach(view => view.AoNotificar(evento, argumento));
   }
 }

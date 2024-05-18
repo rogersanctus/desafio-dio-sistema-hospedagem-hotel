@@ -9,7 +9,7 @@ public abstract class ViewBase
   protected ViewBase(ViewModelBase viewModel)
   {
     this.ViewModel = viewModel;
-    this.ViewModel.SetView(this);
+    this.ViewModel.AdicionarView(this);
   }
 
   public abstract void AoNotificar(string evento, string? argumento = null);
