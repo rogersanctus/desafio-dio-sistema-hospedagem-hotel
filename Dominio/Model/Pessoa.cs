@@ -36,6 +36,11 @@ public class Pessoa
     }
   }
 
+  public string NomeCompleto
+  {
+    get => $"{this._Nome} {this._Sobrenome}";
+  }
+
   public string Usuario
   {
     get => this._Usuario;
@@ -64,5 +69,10 @@ public class Pessoa
     this.Nome = nome;
     this.Sobrenome = sobrenome;
     this.Usuario = usuario;
+  }
+
+  public override string ToString()
+  {
+    return $"Usuário: {this._Usuario} - Nome completo: {this.NomeCompleto}";
   }
 }
