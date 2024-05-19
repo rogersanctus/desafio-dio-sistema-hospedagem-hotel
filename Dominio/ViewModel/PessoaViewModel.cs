@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using SistemaHospedagem.Dominio.Model;
 using SistemaHospedagem.Lib.MVVM.ViewModel;
 
@@ -62,5 +63,10 @@ public class PessoaViewModel : ViewModelBase
     {
       this.NotificarViews("AdicionarPessoa:Erro", ex.Message);
     }
+  }
+
+  public ReadOnlyCollection<Pessoa> ListaPessoas()
+  {
+    return this.gerentePessoas.Pessoas;
   }
 }

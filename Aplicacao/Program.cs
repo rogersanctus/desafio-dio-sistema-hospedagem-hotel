@@ -44,6 +44,7 @@ while (!sair)
   Console.WriteLine();
   Console.WriteLine("# Reservas");
   Console.WriteLine("5 - Criar Hospede");
+  Console.WriteLine("6 - Listar Hospedes");
   Console.WriteLine();
   Console.WriteLine("0 - Sair");
   Console.WriteLine();
@@ -71,6 +72,9 @@ while (!sair)
       break;
     case "5":
       pessoaView.CriarPessoa();
+      break;
+    case "6":
+      pessoaView.ListarPessoas();
       break;
     default:
       ColoredConsole.WriteLine("Opção Inválida", ConsoleColor.Red);

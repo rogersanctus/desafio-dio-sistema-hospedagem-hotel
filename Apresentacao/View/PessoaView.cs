@@ -91,6 +91,28 @@ public class PessoaView : ViewBase
     }
   }
 
+  public void ListarPessoas()
+  {
+    var pessoas = _viewModel.ListaPessoas();
+
+    ColoredConsole.WriteLine("Listando Hóspedes");
+    ColoredConsole.WriteLine("---");
+    ColoredConsole.WriteLine();
+
+    if (pessoas.Count == 0)
+    {
+      ColoredConsole.WriteLine("Nenhum Hóspede cadastrado.", ConsoleColor.Cyan);
+      ColoredConsole.WriteLine();
+      return;
+    }
+
+    foreach (var pessoa in pessoas)
+    {
+      ColoredConsole.WriteLine($"{pessoa.ToString()}", ConsoleColor.Cyan);
+      ColoredConsole.WriteLine();
+    }
+  }
+
   private bool AtribuirNome(Pessoa pessoa)
   {
     ColoredConsole.Write("# Informe o Nome: ");
