@@ -20,7 +20,6 @@ public class PessoaView : ViewBase
   private EtapaCriarPessoa etapaConcluida = EtapaCriarPessoa.Nenhuma;
   public PessoaView(ViewModelBase viewModel) : base(viewModel) { }
   public PessoaViewModel _viewModel { get => (PessoaViewModel)this.ViewModel; }
-  private int etapaCriarPessoa = 0;
 
   public override void AoNotificar(string evento, string? argumento = null)
   {
