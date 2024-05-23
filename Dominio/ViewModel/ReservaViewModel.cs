@@ -9,10 +9,12 @@ public class ReservaViewModel : ViewModelBase
 {
   private List<Reserva> reservas = new List<Reserva>();
   private GerenteSuites gerenteSuites;
+  private GerentePessoas gerentePessoas;
 
-  public ReservaViewModel(GerenteSuites gerenteSuites)
+  public ReservaViewModel(GerenteSuites gerenteSuites, GerentePessoas gerentePessoas)
   {
     this.gerenteSuites = gerenteSuites;
+    this.gerentePessoas = gerentePessoas;
   }
 
   public List<Suite> ListaSuitesDisponiveis()
@@ -72,9 +74,22 @@ public class ReservaViewModel : ViewModelBase
       reserva.AdicionarHospede(pessoa);
       this.NotificarViews("AdicionarHospedeReserva:Sucesso");
     }
-    catch (ArgumentException ex)
+    catch (InvalidOperationException ex)
     {
       this.NotificarViews("AdicionarHospedeReserva:Erro", ex.Message);
+    }
+  }
+
+  public void RemoverHospedeReserva(Reserva reserva, string nomeUsuario)
+  {
+    try
+    {
+      reserva.RemoverHospede(nomeUsuario);
+      this.NotificarViews("RemoverHospedeReserva:Sucesso");
+    }
+    catch (KeyNotFoundException ex)
+    {
+      this.NotificarViews("RemoverHospedeReserva:Erro", ex.Message);
     }
   }
 
@@ -89,11 +104,17 @@ public class ReservaViewModel : ViewModelBase
     try
     {
       this.reservas.Add(reserva);
+      NotificarViews("AdicionarReserva:Sucesso");
     }
     catch (InvalidOperationException ex)
     {
       this.NotificarViews("AdicionarReserva:Erro", ex.Message);
     }
+  }
+
+  public Pessoa? ObterPessoaPorUsuario(string nomeUsuario)
+  {
+    return this.gerentePessoas.Pessoas.FirstOrDefault(pessoa => pessoa.Usuario == nomeUsuario);
   }
 }
 
