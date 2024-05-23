@@ -144,5 +144,29 @@ public class ReservaViewModel : ViewModelBase
   {
     return reservas.AsReadOnly();
   }
+
+  public void LiberarReserva(string input)
+  {
+    Reserva? encontrada = null;
+
+    if (int.TryParse(input, out int numeroReserva))
+    {
+      encontrada = reservas.Find(reserva => reserva.Suite?.Numero == numeroReserva);
+    }
+
+    if (encontrada == null)
+    {
+      NotificarViews("LiberarReserva:Erro", "Reserva não encontrada");
+      return;
+    }
+
+    if (!reservas.Remove(encontrada))
+    {
+      NotificarViews("LiberarReserva:Erro", "Não foi possível remover a Reserva");
+      return;
+    }
+
+    this.NotificarViews("LiberarReserva:Sucesso");
+  }
 }
 

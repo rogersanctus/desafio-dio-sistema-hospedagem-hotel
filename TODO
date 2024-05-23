@@ -34,9 +34,10 @@
   * Definir o tempo de reserva (DONE)
     - O tempo de reserva é em dias, e deve ser maior que 0
     - Tempo de reserva maior ou igual a 10 dias, aplica um desconto de 10%
-  * Liberar reserva
+  * Liberar reserva (DONE)
     - Liberar uma reserva a remove da lista de reservas
-    - Uma reserva pode ser liberada por nome de titular da reserva ou por número da suíte
+    - Uma reserva pode ser liberada por nome de titular da reserva
+    - Uma reserva pode ser liberada por número da suíte (DONE)
   * Listar reservas (DONE)
     - Deve incluir o custo total da reserva, discriminando dias da reserva, valor da diária e descontos aplicados
     - Deve inlcuir a quantidade de hóspedes

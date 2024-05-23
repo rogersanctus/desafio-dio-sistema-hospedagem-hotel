@@ -72,6 +72,13 @@ public class ReservaView : ViewBase, IObserver
       case "AtribuirDiasReserva:Erro":
         Utils.MostrarErro("Falha ao atribuir os dias da reserva.", argumento);
         break;
+
+      case "LiberarReserva:Sucesso":
+        ColoredConsole.WriteLine("Reserva liberada com sucesso.", ConsoleColor.Green);
+        break;
+      case "LiberarReserva:Erro":
+        Utils.MostrarErro("Falha ao liberar a reserva.", argumento);
+        break;
     }
 
     ColoredConsole.WriteLine();
@@ -129,6 +136,28 @@ public class ReservaView : ViewBase, IObserver
     }
   }
 
+  public void LiberarReserva()
+  {
+    ColoredConsole.WriteLine("Liberando Reserva");
+    ColoredConsole.WriteLine("---");
+    ColoredConsole.WriteLine();
+
+    ColoredConsole.Write("Informe o Número da Suíte da reserva: ");
+
+    var qualReserva = Console.ReadLine();
+
+    ColoredConsole.WriteLine();
+
+    if (string.IsNullOrEmpty(qualReserva))
+    {
+      ColoredConsole.WriteLine("Nenhuma entrada fornecida.", ConsoleColor.Yellow);
+      ColoredConsole.WriteLine();
+      return;
+    }
+
+    this._viewModel.LiberarReserva(qualReserva);
+  }
+
   public void ListarReservas()
   {
     ColoredConsole.WriteLine("Listando Reservas");
@@ -166,7 +195,7 @@ public class ReservaView : ViewBase, IObserver
     decimal totalReserva = (reserva.DiasReserva * valorDiaria);
     totalReserva *= 1 - reserva.Desconto;
 
-    ColoredConsole.WriteLine($"Quantidade de Hóspedes: {reserva.Hospedes.Count}", ConsoleColor.Cyan);
+    ColoredConsole.WriteLine($"Número da Suíte: {reserva.Suite?.Numero}, Quantidade de Hóspedes: {reserva.Hospedes.Count}", ConsoleColor.Cyan);
     ColoredConsole.WriteLine($"Valor total da Reserva: {totalReserva:C}", ConsoleColor.Cyan);
     ColoredConsole.WriteLine($"Dias da Reserva: {reserva.DiasReserva}, Valor da Diária: {valorDiaria:C}, Descontos: {reserva.Desconto:P}", ConsoleColor.Cyan);
   }

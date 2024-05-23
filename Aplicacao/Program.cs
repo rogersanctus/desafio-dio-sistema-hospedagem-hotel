@@ -50,8 +50,9 @@ while (!sair)
   Console.WriteLine("# Reservas");
   Console.WriteLine("5 - Criar Hospede");
   Console.WriteLine("6 - Criar Reserva");
-  Console.WriteLine("7 - Listar Hospedes");
-  Console.WriteLine("8 - Listar Reservas");
+  Console.WriteLine("7 - Liberar Reserva (finalizar)");
+  Console.WriteLine("8 - Listar Hospedes");
+  Console.WriteLine("9 - Listar Reservas");
   Console.WriteLine();
   Console.WriteLine("0 - Sair");
   Console.WriteLine();
@@ -84,9 +85,12 @@ while (!sair)
       reservaView.CriarReserva();
       break;
     case "7":
-      pessoaView.ListarPessoas();
+      reservaView.LiberarReserva();
       break;
     case "8":
+      pessoaView.ListarPessoas();
+      break;
+    case "9":
       reservaView.ListarReservas();
       break;
     default:
