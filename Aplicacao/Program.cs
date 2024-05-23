@@ -2,19 +2,24 @@ using System.Globalization;
 using SistemaHospedagem.Apresentacao.View;
 using SistemaHospedagem.Dominio.Model;
 using SistemaHospedagem.Dominio.ViewModel;
+using SistemaHospedagem.Lib.Mediator;
 using SistemaHospedagem.Lib.UI;
 
 var configuracaoHotel = new ConfiguracaoHotel();
 var gerenteSuites = new GerenteSuites(configuracaoHotel);
 var gerentePessoas = new GerentePessoas();
 
+var mediator = new Mediator();
+
 var configuracaoInicialViewModel = new ConfiguracaoInicialViewModel(configuracaoHotel);
 var suiteViewModel = new SuiteViewModel(gerenteSuites);
-var pessoaViewModel = new PessoaViewModel(gerentePessoas);
+var pessoaViewModel = new PessoaViewModel(gerentePessoas, mediator);
+var reservaViewModel = new ReservaViewModel(gerenteSuites, gerentePessoas);
 
 var configuracaoInicialView = new ConfiguracaoInicialView(configuracaoInicialViewModel);
 var suiteView = new SuiteView(suiteViewModel);
 var pessoaView = new PessoaView(pessoaViewModel);
+var reservaView = new ReservaView(reservaViewModel, pessoaView, mediator);
 
 bool sair = false;
 
@@ -44,7 +49,8 @@ while (!sair)
   Console.WriteLine();
   Console.WriteLine("# Reservas");
   Console.WriteLine("5 - Criar Hospede");
-  Console.WriteLine("6 - Listar Hospedes");
+  Console.WriteLine("6 - Criar Reserva");
+  Console.WriteLine("7 - Listar Hospedes");
   Console.WriteLine();
   Console.WriteLine("0 - Sair");
   Console.WriteLine();
@@ -74,6 +80,9 @@ while (!sair)
       pessoaView.CriarPessoa();
       break;
     case "6":
+      reservaView.CriarReserva();
+      break;
+    case "7":
       pessoaView.ListarPessoas();
       break;
     default:
