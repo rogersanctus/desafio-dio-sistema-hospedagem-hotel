@@ -24,7 +24,7 @@
     - por nome de usuário
 
 # Gerenciamento de Reservas
-  * Escolha da suíte
+  * Escolha da suíte (DONE)
     - Deve listar as suítes disponíveis
     - Ao escolher deve validar se a suíte não está sendo usada (está em alguma reserva) (DONE)
   * Adicionar hóspede (DONE)
