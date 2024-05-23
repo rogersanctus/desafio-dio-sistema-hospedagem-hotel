@@ -131,6 +131,24 @@ public class ReservaView : ViewBase, IObserver
 
   private bool AtribuirSuite(Reserva reserva)
   {
+    ColoredConsole.WriteLine("Atribuindo uma Suíte");
+    ColoredConsole.WriteLine("***");
+    ColoredConsole.WriteLine();
+
+    var suites = this._viewModel.ListaSuitesDisponiveis();
+
+    if (suites.Count > 0)
+    {
+      ColoredConsole.WriteLine("Suítes Disponíveis:");
+      suites.ForEach(suite => ColoredConsole.WriteLine(suite.ToString(), ConsoleColor.Cyan));
+      ColoredConsole.WriteLine();
+    }
+    else
+    {
+      ColoredConsole.WriteLine("Nenhuma suíte disponível", ConsoleColor.Cyan);
+      ColoredConsole.WriteLine();
+    }
+
     ColoredConsole.Write("# Informe o Número da suíte: ");
     var numeroSuiteStr = Console.ReadLine();
 
