@@ -3,10 +3,10 @@
 
 # Configuração de suítes
   * Criar suítes
-    - Difinir nome (DONE)
+    - Definir nome (DONE)
       > armazenar em maiúsculo
     - Definir capacidade (DONE)
-      > A capacidade da nova suítes não deve, somada a capacidade das demais suites, ultrapassar a capacidade geral do hotel
+      > A capacidade da nova suítes não deve, somada a capacidade das demais suítes, ultrapassar a capacidade geral do hotel
     - Definir valor da diária (DONE)
       > O valor da diária deve ser maior ou igual 0
     - Auto atribuir um número à suíte (DONE)
@@ -40,4 +40,4 @@
     - Uma reserva pode ser liberada por número da suíte (DONE)
   * Listar reservas (DONE)
     - Deve incluir o custo total da reserva, discriminando dias da reserva, valor da diária e descontos aplicados
-    - Deve inlcuir a quantidade de hóspedes
+    - Deve incluir a quantidade de hóspedes
