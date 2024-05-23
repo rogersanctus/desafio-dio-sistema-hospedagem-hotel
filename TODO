@@ -29,8 +29,8 @@
     - Ao escolher deve validar se a suíte não está sendo usada (está em alguma reserva) (DONE)
   * Adicionar hóspede (DONE)
     - Oferecer opção de adicionar novo hóspede ou de adicionar um usuário cadastrado por nome de usuário
-      > O hóspede não pode estar em outra reserva no mesmo momento
-      > A quantidade de hóspedes deve ser menor ou igual a capacidade da suíte escolhida
+      > O hóspede não pode estar em outra reserva no mesmo momento (TODO)
+      > A quantidade de hóspedes deve ser menor ou igual a capacidade da suíte escolhida (DONE)
   * Definir o tempo de reserva (DONE)
     - O tempo de reserva é em dias, e deve ser maior que 0
     - Tempo de reserva maior ou igual a 10 dias, aplica um desconto de 10%
