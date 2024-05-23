@@ -114,7 +114,7 @@ public class ReservaViewModel : ViewModelBase
 
   public Pessoa? ObterPessoaPorUsuario(string nomeUsuario)
   {
-    return this.gerentePessoas.Pessoas.FirstOrDefault(pessoa => pessoa.Usuario == nomeUsuario);
+    return this.gerentePessoas.ObterPessoaPorUsuario(nomeUsuario);
   }
 }
 

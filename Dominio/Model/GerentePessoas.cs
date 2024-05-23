@@ -23,5 +23,11 @@ public class GerentePessoas
 
     this._Pessoas.Add(pessoa);
   }
+
+  public Pessoa? ObterPessoaPorUsuario(string nomeUsuario)
+  {
+    return this._Pessoas.FirstOrDefault(pessoa => pessoa.Usuario == nomeUsuario);
+  }
+
 }
 
