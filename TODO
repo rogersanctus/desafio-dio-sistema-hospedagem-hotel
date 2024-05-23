@@ -37,6 +37,6 @@
   * Liberar reserva
     - Liberar uma reserva a remove da lista de reservas
     - Uma reserva pode ser liberada por nome de titular da reserva ou por número da suíte
-  * Listar reservas
+  * Listar reservas (DONE)
     - Deve incluir o custo total da reserva, discriminando dias da reserva, valor da diária e descontos aplicados
     - Deve inlcuir a quantidade de hóspedes
