@@ -1,5 +1,7 @@
 using System.Collections.ObjectModel;
+using System.Text.Json;
 using SistemaHospedagem.Dominio.Model;
+using SistemaHospedagem.Lib.Mediator;
 using SistemaHospedagem.Lib.MVVM.ViewModel;
 
 namespace SistemaHospedagem.Dominio.ViewModel;
@@ -7,10 +9,12 @@ namespace SistemaHospedagem.Dominio.ViewModel;
 public class PessoaViewModel : ViewModelBase
 {
   private GerentePessoas gerentePessoas;
+  private Mediator mediator;
 
-  public PessoaViewModel(GerentePessoas gerentePessoas)
+  public PessoaViewModel(GerentePessoas gerentePessoas, Mediator mediator)
   {
     this.gerentePessoas = gerentePessoas;
+    this.mediator = mediator;
   }
 
   public void AtribuirNome(Pessoa pessoa, string nome)
@@ -57,11 +61,14 @@ public class PessoaViewModel : ViewModelBase
     try
     {
       this.gerentePessoas.AdicionarPessoa(pessoa);
-      this.NotificarViews("AdicionarPessoa:Sucesso", pessoa.ToString());
+      var pessoaJson = JsonSerializer.Serialize(pessoa);
+      this.NotificarViews("AdicionarPessoa:Sucesso", pessoaJson);
+      this.mediator.Notify("AdicionarPessoa:Sucesso", pessoaJson);
     }
     catch (InvalidOperationException ex)
     {
       this.NotificarViews("AdicionarPessoa:Erro", ex.Message);
+      this.mediator.Notify("AdicionarPessoa:Erro", ex.Message);
     }
   }
 
