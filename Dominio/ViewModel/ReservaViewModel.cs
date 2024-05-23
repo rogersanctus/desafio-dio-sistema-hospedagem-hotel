@@ -1,6 +1,7 @@
 namespace SistemaHospedagem.Dominio.ViewModel;
 
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 using SistemaHospedagem.Lib.MVVM.ViewModel;
 using SistemaHospedagem.Dominio.Model;
@@ -115,6 +116,11 @@ public class ReservaViewModel : ViewModelBase
   public Pessoa? ObterPessoaPorUsuario(string nomeUsuario)
   {
     return this.gerentePessoas.ObterPessoaPorUsuario(nomeUsuario);
+  }
+
+  public ReadOnlyCollection<Reserva> ListaReservas()
+  {
+    return reservas.AsReadOnly();
   }
 }
 

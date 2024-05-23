@@ -129,6 +129,48 @@ public class ReservaView : ViewBase, IObserver
     }
   }
 
+  public void ListarReservas()
+  {
+    ColoredConsole.WriteLine("Listando Reservas");
+    ColoredConsole.WriteLine("---");
+    ColoredConsole.WriteLine();
+
+    var reservas = _viewModel.ListaReservas();
+
+    if (reservas.Count == 0)
+    {
+      ColoredConsole.WriteLine("Nenhuma Reserva efetuada.", ConsoleColor.Cyan);
+      ColoredConsole.WriteLine();
+      return;
+    }
+
+    int index = 0;
+    foreach (Reserva reserva in reservas)
+    {
+      DetalharReserva(reserva);
+
+      index++;
+
+      if (index == reservas.Count - 1)
+      {
+        ColoredConsole.WriteLine("-*-*-", ConsoleColor.Cyan);
+      }
+    }
+
+    ColoredConsole.WriteLine();
+  }
+
+  private void DetalharReserva(Reserva reserva)
+  {
+    decimal valorDiaria = reserva.Suite?.PrecoDiaria ?? 0M;
+    decimal totalReserva = (reserva.DiasReserva * valorDiaria);
+    totalReserva *= 1 - reserva.Desconto;
+
+    ColoredConsole.WriteLine($"Quantidade de Hóspedes: {reserva.Hospedes.Count}", ConsoleColor.Cyan);
+    ColoredConsole.WriteLine($"Valor total da Reserva: {totalReserva:C}", ConsoleColor.Cyan);
+    ColoredConsole.WriteLine($"Dias da Reserva: {reserva.DiasReserva}, Valor da Diária: {valorDiaria:C}, Descontos: {reserva.Desconto:P}", ConsoleColor.Cyan);
+  }
+
   private bool AtribuirSuite(Reserva reserva)
   {
     ColoredConsole.WriteLine("Atribuindo uma Suíte");
