@@ -36,14 +36,16 @@ public class Reserva
 
   public int DiasReserva
   {
-    get => _DiasReserva; set
+    get => _DiasReserva;
+
+    set
     {
-      if (_DiasReserva <= 0)
+      if (value <= 0)
       {
         throw new ArgumentException("A quantidade de dias da reserva deve ser maior que zero");
       }
 
-      if (_DiasReserva > 10)
+      if (value > 10)
       {
         _Desconto = DESCONTO_DEZ_DIAS;
       }
@@ -60,18 +62,31 @@ public class Reserva
     get => etapasConfiguradas == ETAPAS_NECESSARIAS;
   }
 
+  public bool IsCapacidadeAlcancada
+  {
+    get => Suite == null || Hospedes.Count >= Suite.Capacidade;
+  }
+
   public Reserva()
   {
   }
 
   public void AdicionarHospede(Pessoa pessoa)
   {
-    if (Suite != null && Suite.Capacidade >= Hospedes.Count)
+    if (IsCapacidadeAlcancada)
     {
       throw new InvalidOperationException("Não é possível adicionar mais hospédes nesta suíte");
     }
 
     this._Hospedes.Add(pessoa);
     etapasConfiguradas |= ETAPA_HOSPEDES;
+  }
+
+  public void RemoverHospede(string nomeUsuario)
+  {
+    if (_Hospedes.RemoveAll(pessoa => pessoa.Usuario == nomeUsuario) <= 0)
+    {
+      throw new KeyNotFoundException("Nenhum hóspede com este nome de usuário está na reserva");
+    }
   }
 }
