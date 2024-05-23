@@ -70,6 +70,23 @@ public class ReservaViewModel : ViewModelBase
 
   public void AdicionarHospedeReserva(Reserva reserva, Pessoa pessoa)
   {
+    var isHospedeEmOutraReserva = this.reservas.Any(
+      reservaComparada => HospedeExisteEmReserva(reservaComparada, pessoa)
+    );
+
+    if (isHospedeEmOutraReserva)
+    {
+      this.NotificarViews("AdicionarHospedeReserva:Erro", "O Hospede já está em outra reserva");
+      return;
+    }
+
+    // Also check in the current reserva as it is not added to 'reservas' yet.
+    if (HospedeExisteEmReserva(reserva, pessoa))
+    {
+      this.NotificarViews("AdicionarHospedeReserva:Erro", "O Hospede já está nesta reserva");
+      return;
+    }
+
     try
     {
       reserva.AdicionarHospede(pessoa);
@@ -79,6 +96,11 @@ public class ReservaViewModel : ViewModelBase
     {
       this.NotificarViews("AdicionarHospedeReserva:Erro", ex.Message);
     }
+  }
+
+  private bool HospedeExisteEmReserva(Reserva reserva, Pessoa pessoa)
+  {
+    return reserva.Hospedes.Exists(hospede => hospede.Usuario == pessoa.Usuario);
   }
 
   public void RemoverHospedeReserva(Reserva reserva, string nomeUsuario)
