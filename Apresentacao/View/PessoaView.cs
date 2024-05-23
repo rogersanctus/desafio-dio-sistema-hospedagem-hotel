@@ -47,10 +47,10 @@ public class PessoaView : ViewBase
         Utils.MostrarErro("Falha ao atribuir o Nome de Usuário.", argumento);
         break;
       case "AdicionarPessoa:Sucesso":
-        ColoredConsole.WriteLine("Hóspede adicionado com sucesso.", ConsoleColor.Green);
+        ColoredConsole.WriteLine("Hóspede cadastrado com sucesso.", ConsoleColor.Green);
         break;
       case "AdicionarPessoa:Erro":
-        Utils.MostrarErro("Falha ao adicionar a Hóspede.", argumento);
+        Utils.MostrarErro("Falha ao cadastrar a Hóspede.", argumento);
         break;
     }
 
